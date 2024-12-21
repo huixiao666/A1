@@ -389,11 +389,9 @@
     <div class="header">
         <button class="toggle-sidebar" onclick="toggleSidebar()">☰ 菜单</button>
         <div class="search-bar">
-    <div class="header">
-        <div class="search-bar">
-            <input type="text" id="searchInput" placeholder="搜索应用">
-            <button onclick="performSearch()">搜索</button>
-        </div>
+    <div class="search-bar">
+    <input type="text" id="searchInput" placeholder="搜索应用">
+    <button onclick="performSearch()">搜索</button>
     </div>
    </div>
 
@@ -2589,7 +2587,29 @@ NaiMei開房浴室深喉調情 撕裂黑絲扣玩粉穴激烈啪啪潮噴等
                 behavior: 'smooth'
             });
         }
+   </script>
+    <script>
+function performSearch() {
+    var searchInput = document.getElementById('searchInput');
+    var searchText = searchInput.value.toLowerCase();
 
+    // 获取所有的应用项目
+    var appItems = document.querySelectorAll('.app-item');
+
+    // 遍历每个应用项目,检查是否匹配搜索关键词
+    for (var i = 0; i < appItems.length; i++) {
+        var appName = appItems[i].querySelector('.app-name').textContent.toLowerCase();
+        var appCategory = appItems[i].querySelector('.app-category').textContent.toLowerCase();
+
+        if (appName.includes(searchText) || appCategory.includes(searchText)) {
+            appItems[i].classList.remove('hidden');
+        } else {
+            appItems[i].classList.add('hidden');
+        }
+    }
+}
+    </script>
+<script>
         window.addEventListener('DOMContentLoaded', function() {
             var sidebar = document.getElementById('sidebar');
             sidebar.style.height = window.innerHeight + 'px';
