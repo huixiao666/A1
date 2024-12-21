@@ -389,11 +389,11 @@
     <div class="header">
         <button class="toggle-sidebar" onclick="toggleSidebar()">☰ 菜单</button>
         <div class="search-bar">
-    <<div class="search-bar">
+   </div>
+<div class="search-bar">
         <input type="text" id="searchInput" placeholder="搜索内容">
         <button onclick="performSearch()">搜索</button>
     </div>
-   </div>
 
     <div class="nav">
         <!-- 导航栏链接 -->
@@ -433,7 +433,7 @@
     </div>
     </div>
 
-    <div class="card-container">
+    <div class="card-container" id="cardContainer">
         <!-- 卡片内容 -->
         <div class="card" id="card1">
         <div class="card-content">
@@ -2588,27 +2588,7 @@ NaiMei開房浴室深喉調情 撕裂黑絲扣玩粉穴激烈啪啪潮噴等
             });
         }
    </script>
-    <script>
-function performSearch() {
-    var searchInput = document.getElementById('searchInput');
-    var searchText = searchInput.value.toLowerCase();
-
-    // 获取所有的应用项目
-    var appItems = document.querySelectorAll('.app-item');
-
-    // 遍历每个应用项目,检查是否匹配搜索关键词
-    for (var i = 0; i < appItems.length; i++) {
-        var appName = appItems[i].querySelector('.app-name').textContent.toLowerCase();
-        var appCategory = appItems[i].querySelector('.app-category').textContent.toLowerCase();
-
-        if (appName.includes(searchText) || appCategory.includes(searchText)) {
-            appItems[i].classList.remove('hidden');
-        } else {
-            appItems[i].classList.add('hidden');
-        }
-    }
-}
-    </script>
+    
 <script>
         window.addEventListener('DOMContentLoaded', function() {
             var sidebar = document.getElementById('sidebar');
@@ -2616,22 +2596,25 @@ function performSearch() {
         });
     </script>
 
-    <script>
+<script>
         function performSearch() {
-            var input = document.getElementById('searchInput');
-            var filter = input.value.toUpperCase();
-            var cards = document.getElementsByClassName('card');
+    var input = document.getElementById('searchInput');
+    var filter = input.value.toLowerCase();
+    var cardContainer = document.getElementById('cardContainer');
+    var cards = cardContainer.getElementsByClassName('card');
 
-            for (var i = 0; i < cards.length; i++) {
-                var card = cards[i];
-                var cardText = card.textContent || card.innerText;
-                if (cardText.toUpperCase().indexOf(filter) > -1) {
-                    card.classList.remove('hidden');
-                } else {
-                    card.classList.add('hidden');
-                }
-            }
+    for (var i = 0; i < cards.length; i++) {
+        var card = cards[i];
+        var cardTitle = card.querySelector('.card-title').textContent.toLowerCase();
+        var cardInfo = card.querySelector('.card-info').textContent.toLowerCase();
+
+        if (cardTitle.includes(filter) || cardInfo.includes(filter)) {
+            card.classList.remove('hidden');
+        } else {
+            card.classList.add('hidden');
         }
-    
+    }
+}
+</script>
 </body>
 </html>
